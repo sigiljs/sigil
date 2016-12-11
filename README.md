@@ -18,7 +18,7 @@ Simply reference the Web Component polyfill and Sigil from a CDN:
 ```
 
 # Hello World
-Web Components allow us to create entirely new HTML components reusable anywhere on the web. Each component lives in its own file. Sigil helps us create these components in easy and performant way. Let's start with something basic.
+Web Components allow us to create entirely new HTML components reusable anywhere on the web. Each component lives in its own file. Sigil helps us create these components in an easy and performant way. Let's start with something basic.
 
 index.html
 ```html
@@ -49,7 +49,7 @@ index.html
 </script>
 ```
 # Attributes & Props
-Sigil.js makes development of functional web components easy. It only supports unidirectional binding of its defined properties and attributes. Both attributes and your defined props are reactive, meaning if you change them it will trigger a re-render of the component. Components by default are [pure](https://en.wikipedia.org/wiki/Pure_function), meaning if you give them the exact same attributes or props no re-render will occur.
+Custom elements are more interesting when bound to data. Sigil.js supports unidirectional binding of its defined properties and attributes. Both attributes and your defined props are reactive, meaning if you change them it will trigger a re-render of the component. Components by default are [pure](https://en.wikipedia.org/wiki/Pure_function), meaning if you give them the exact same attributes or props no re-render will occur.
 
 ```html  
 <template id="hello-world">
@@ -60,8 +60,11 @@ Sigil.js makes development of functional web components easy. It only supports u
 </script>
 
 <hello-world greeting="Hola"></hello-world>
+
 <script>
-  document.querySelector("hello-world").person = "Richard";
+  window.addEventListener('WebComponentsReady', function(e) {
+    document.querySelector("hello-world").person = "Richard";
+  });
 </script>
 ```
 
