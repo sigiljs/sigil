@@ -227,7 +227,9 @@ Elements can be conditionally rendered based off a boolean expression.
 
 <hello-world></hello-world>
 <script>
-  document.querySelector("hello-world").language = "chinese";
+  window.addEventListener('WebComponentsReady', function(e) {
+    document.querySelector("hello-world").language = "chinese";
+  });
 </script>
 ```
 
@@ -245,7 +247,9 @@ Lists of elements can be rendered out from arrays.
 </script>
 <hello-people></hello-people>
 <script>
-  document.querySelector("hello-people").people = ["Richard","Howard","Justin"];
+  window.addEventListener('WebComponentsReady', function(e) {
+    document.querySelector("hello-people").people = ["Richard","Howard","Justin"];
+  });
 </script>
 ```
 
@@ -283,8 +287,10 @@ Parameters
 
 <hello-button></hello-button>
 <script>
-  document.querySelector("hello-button").addEventHandler("click",function(e){
-    console.log(e.details);
+  window.addEventListener('WebComponentsReady', function(e) {
+    document.querySelector("hello-button").addEventHandler("click",function(e){
+      console.log(e.details);
+    });
   });
 </script>
 ```
@@ -312,14 +318,16 @@ Parameters
 
 <hello-button></hello-button>
 <script>
-  document.querySelector("hello-button").addEventHandler("action",function(e){
-    var action = e.details;
-    var type = action.type;
-    var data = action.data;
+  window.addEventListener('WebComponentsReady', function(e) {
+    document.querySelector("hello-button").addEventHandler("action",function(e){
+      var action = e.details;
+      var type = action.type;
+      var data = action.data;
 
-    if( type === 'say-hello' ){
-      console.log(data);
-    }    
+      if( type === 'say-hello' ){
+        console.log(data);
+      }    
+    });
   });
 </script>
 ```
