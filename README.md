@@ -18,6 +18,8 @@ Simply reference the Web Component polyfill and Sigil from a CDN:
 ```
 
 # Hello World Component
+Web Components allow us to create entirely new HTML components reusable anywhere on the web. Each component lives in its own file. Sigil helps us create these components in easy and performant way. Let's start with something basic.
+
 index.html
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.23/webcomponents.min.js"></script>
@@ -33,8 +35,9 @@ hello-world.html
 <script>
   sigil("hello-world")
 </script>
-
 ```
+
+Notice the dependencies exist within the web component file itself, allowing your index.html to be nice and clean, and letting your web component express what it needs.
 
 # Attributes & Props
 Sigil.js makes development of functional web components easy. It only supports unidirectional binding of its defined properties and attributes. Both attributes and your defined props are reactive, meaning if you change them it will trigger a re-render of the component. Components by default are [pure](https://en.wikipedia.org/wiki/Pure_function), meaning if you give them the exact same attributes or props no re-render will occur.
