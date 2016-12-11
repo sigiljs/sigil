@@ -42,9 +42,11 @@ Just like it takes time for a document to load, it takes a small amount of time 
 
 index.html
 ```
-window.addEventListener('WebComponentsReady', function(e) {
+<script>
+  window.addEventListener('WebComponentsReady', function(e) {
     // imports are loaded and elements have been registered
-});
+  });
+</script>
 ```
 # Attributes & Props
 Sigil.js makes development of functional web components easy. It only supports unidirectional binding of its defined properties and attributes. Both attributes and your defined props are reactive, meaning if you change them it will trigger a re-render of the component. Components by default are [pure](https://en.wikipedia.org/wiki/Pure_function), meaning if you give them the exact same attributes or props no re-render will occur.
