@@ -38,7 +38,7 @@ hello-world.html
 ```
 Notice the dependencies exist within the web component file itself, allowing your index.html to be nice and clean, and letting your web component express what it needs. Sigil will search for a template element with the same id as it's element name that will be used as the contents of the component.
 
-Just like it takes time for a document to load, it takes a small amount of time for Web Components dependencies to be acquired and our custom elements fully created. We can understand when the work is complete with the event:
+Just like it takes time for a document to load, it takes a small amount of time for Web Components dependencies to be acquired and our custom elements fully created. We can know when the work is complete with the `WebComponentsReady` event:
 
 index.html
 ```html
