@@ -36,39 +36,6 @@ hello-world.html
 
 ```
 
-# Syntax Highlighting
-By default sigil will look for a template of the same id as the tag name. Template tags allow you to specify inert html in your web page. It also has the benefit of giving syntax highlighting.
-
-```html
-<template id="hello-world">
-    <div>Hello World!</div>
-</template>
-<script>
-  sigil("hello-world")
-</script>
-
-<hello-world></hello-world>
-```
-
-# Web Component
-Sigil.js contains everything you need to use [web components](http://webcomponents.org). This allows us to use HTML imports to put our component in a separate file.
-
-index.html:
-```html
-<link rel="import" href="hello-world.html" >
-<hello-world></hello-world>
-```
-
-hello-world.html:
-```html  
-<template id="hello-world">
-    <div>Hello World!</div>
-</template>
-<script>
-  sigil("hello-world")
-</script>
-```
-
 # Attributes & Props
 Sigil.js makes development of functional web components easy. It only supports unidirectional binding of its defined properties and attributes. Both attributes and your defined props are reactive, meaning if you change them it will trigger a re-render of the component. Components by default are [pure](https://en.wikipedia.org/wiki/Pure_function), meaning if you give them the exact same attributes or props no re-render will occur.
 
