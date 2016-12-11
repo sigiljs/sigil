@@ -1,3 +1,6 @@
+<script src="https://unpkg.com/kamea@latest/dist/kamea.min.js"></script>
+<script src="../../dist/sigil.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/tastejs/todomvc-app-css/master/index.css">
 <template id="x-todo-app">
   <div>
 		<section class="todoapp">
@@ -52,6 +55,65 @@
 </template>
 <script>
   sigil("x-todo-app",["state"], {
+    lifecycle:{
+      created: function(){
+        var store = new Kamea();
+        var domain = store.domain("todo",{
+          toggle_all:false,
+          mode: "all",
+          todos: [
+            {
+              text:"Taste JavaScript",
+              completed: true
+            },
+            {
+              text:"Buy a unicorn",
+              completed: false
+            }
+          ]
+        })
+        domain.action('toggle_all',function(state){
+          var newToggleAll = !state.toggle_all;
+          state.todos.forEach(function(x){
+            x.set("completed",newToggleAll);
+          })
+          state.set("toggle_all",newToggleAll);
+        })
+        domain.action('input_key',function(state,action){
+          if(action.data.key == "Enter" && action.data.target.value !== ""){
+            state.todos.push({
+              text:action.data.target.value,
+              completed: false
+            })
+            action.data.target.value = "";
+          }
+        })
+        domain.action('change_mode',function(state,action){
+          state.set("mode",action.data)
+        })
+        domain.action('toggle_todo',function(state,action){
+          var todo = state.todos[action.data];
+          todo.set("completed",!todo.completed);
+        })
+        domain.action('delete_todo',function(state,action){
+          state.todos.splice(action.data,1);
+        })
+        domain.action('clear_completed',function(state,action){
+          state.set("todos",state.todos.filter(function(x){return !x.completed}));
+        })
+
+        var _this = this;
+        function render(){
+          _this.state = store.state.todo;
+        }
+        store.subscribe(render);
+        render();
+
+        this.addEventListener("action",function(e){
+          store.dispatch(e.detail);
+        })
+      }
+    },
     methods:{
       getItems:function(){
         if(this.state){

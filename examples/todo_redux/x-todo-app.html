@@ -1,3 +1,6 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.min.js"></script>
+<script src="../../dist/sigil.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://rawgit.com/tastejs/todomvc-app-css/master/index.css">
 <template id="x-todo-app">
   <div>
 		<section class="todoapp">
@@ -52,6 +55,70 @@
 </template>
 <script>
   sigil("x-todo-app",["state"], {
+    lifecycle: {
+      created: function(){
+        var initialState = {
+          toggle_all:false,
+          mode: "all",
+          todos: [
+            {
+              text:"Taste JavaScript",
+              completed: true
+            },
+            {
+              text:"Buy a unicorn",
+              completed: false
+            }
+          ]
+        }
+
+        function todoReducer(state = initialState, action) {
+          switch (action.type) {
+            case 'toggle_all':
+              var newToggleAll = !state.toggle_all;
+              var newTodos = state.todos.map(function(x){
+                x.completed = newToggleAll;
+                return x;
+              })
+              return Object.assign({},state,{toggle_all:newToggleAll,todos:newTodos});
+            case 'input_key':
+              if(action.data.key == "Enter" && action.data.target.value !== ""){
+                var newTodos = state.todos;
+                newTodos.push({
+                  text:action.data.target.value,
+                  completed: false
+                })
+                action.data.target.value = "";
+                return Object.assign({},state,{todos:newTodos});
+              }
+              return state;
+            case 'change_mode':
+              return Object.assign({},state,{mode:action.data});
+            case 'toggle_todo':
+              state.todos[action.data].completed = !state.todos[action.data].completed;
+              return Object.assign({},state);
+            case 'delete_todo':
+              return Object.assign({},state,{todos:state.todos.filter(function(x,i){return i!=action.data})});
+            case 'clear_completed':
+              return Object.assign({},state,{todos:state.todos.filter(function(x){return !x.completed})});
+            default:
+              return state
+          }
+        }
+
+        var store = Redux.createStore(todoReducer);
+        var _this = this;
+        function render(){
+          _this.state = store.getState();
+        }
+        store.subscribe(render);
+        render();
+
+        document.addEventListener("action",function(e){
+          store.dispatch(e.detail);
+        })
+      }
+    },
     methods:{
       getItems:function(){
         if(this.state){
