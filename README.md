@@ -17,15 +17,23 @@ Simply reference the Web Component polyfill and Sigil from a CDN:
 <script src="https://unpkg.com/sigiljs@latest/dist/sigil.min.js"></script>
 ```
 
-# Hello World
+# Hello World Component
+index.html
 ```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.23/webcomponents.min.js"></script>
+<link rel="import" href="hello-world.html">
+<hello-world></hello-world>
+```
+hello-world.html
+```html
+<script src="https://unpkg.com/sigiljs@latest/dist/sigil.min.js"></script>
+<template id="hello-world">
+  <div>Hello World</div>
+</template>
 <script>
-  sigil("hello-world",{
-    template: "<div>Hello World!</div>"
-  })
+  sigil("hello-world")
 </script>
 
-<hello-world></hello-world>
 ```
 
 # Syntax Highlighting
