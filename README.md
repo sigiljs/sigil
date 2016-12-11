@@ -37,7 +37,7 @@ hello-world.html
 </script>
 ```
 
-Notice the dependencies exist within the web component file itself, allowing your index.html to be nice and clean, and letting your web component express what it needs.
+Notice the dependencies exist within the web component file itself, allowing your index.html to be nice and clean, and letting your web component express what it needs. Sigil will search for a template element with the same id as it's element name that will be used as the contents of the component.
 
 # Attributes & Props
 Sigil.js makes development of functional web components easy. It only supports unidirectional binding of its defined properties and attributes. Both attributes and your defined props are reactive, meaning if you change them it will trigger a re-render of the component. Components by default are [pure](https://en.wikipedia.org/wiki/Pure_function), meaning if you give them the exact same attributes or props no re-render will occur.
