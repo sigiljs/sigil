@@ -41,7 +41,7 @@ Notice the dependencies exist within the web component file itself, allowing you
 Just like it takes time for a document to load, it takes a small amount of time for Web Components dependencies to be acquired and our custom elements fully created. We can understand when the work is complete with the event:
 
 index.html
-```
+```html
 <script>
   window.addEventListener('WebComponentsReady', function(e) {
     // imports are loaded and elements have been registered
