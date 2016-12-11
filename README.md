@@ -11,6 +11,8 @@ Sigil.js is a view framework for the modern web. It features the following in on
 * support for immutable flux based stores like [Redux](http://redux.js.org/) and [Kamea](https://github.com/sigiljs/kamea)
 
 # Installation
+Simply reference the Web Component polyfill and Sigil from a CDN:
+
 CDN:
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.23/webcomponents.min.js"></script>
