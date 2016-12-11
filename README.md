@@ -358,9 +358,9 @@ Some times the default sigil component creator is not enough.  You can create yo
 </script>
 ```
 
-# Browser Support
-* Edge (all versions and devices), Internet Explorer 9+
-* Firefox (all versions, devices, and platforms)
-* Chrome (all versions, devices, and platforms), Android 4+ stock browser
-* Safari Mac, Safari iOS 5+
-* Opera 11+ (all devices and platforms)
+# Performance
+Here are some great links for writing performant web applications with Web Components:
+
+* https://aerotwist.com/blog/polymer-for-the-performance-obsessed/
+* https://github.com/Polymer/vulcanize
+* https://www.polymer-project.org/1.0/docs/tools/polymer-cli
