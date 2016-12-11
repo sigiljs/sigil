@@ -1,0 +1,10 @@
+<template id="x-counter">
+  <div>
+    {{:count}}
+    <button @click="$action('increment')">+</button>
+    <button @click="$action('decrement')">-</button>
+  </div>
+</template>
+<script>
+  sigil("x-counter",["count"]);
+</script>

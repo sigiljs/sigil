@@ -1,0 +1,29 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.min.js"></script>
+<script src="../../dist/sigil.min.js"></script>
+<link rel="import" href="x-counter.html" >
+<x-counter></x-counter>
+<script>
+window.addEventListener('WebComponentsReady', function(e) {
+  function counterReducer(state = 0, action) {
+    switch (action.type) {
+      case 'increment':
+        return state+=1;
+      case 'decrement':
+        return state-=1;
+      default:
+        return state
+    }
+  }
+
+  var store = Redux.createStore(counterReducer);
+  function render(){
+    document.querySelector("x-counter").count = store.getState();
+  }
+  store.subscribe(render);
+  render();
+
+  document.addEventListener("action",function(e){
+    store.dispatch(e.detail);
+  })
+ });
+</script>

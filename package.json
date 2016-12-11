@@ -1,0 +1,31 @@
+{
+  "name": "sigiljs",
+  "version": "0.0.12",
+  "description": "",
+  "main": "src/sigil.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "start": "webpack --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/richardanaya/sigil.git"
+  },
+  "author": "Richard Anaya",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/richardanaya/sigil/issues"
+  },
+  "homepage": "https://github.com/richardanaya/sigil#readme",
+  "devDependencies": {
+    "babel-core": "^6.18.2",
+    "babel-loader": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-preset-react": "latest",
+    "babel-preset-stage-0": "latest",
+    "classnames": "^2.2.5",
+    "webpack": "latest"
+  }
+}

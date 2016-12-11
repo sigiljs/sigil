@@ -1,0 +1,16 @@
+<template id="x-clock">
+  <div>The time is now {{:time}}</div>
+</template>
+<script>
+  sigil("x-clock",["time"],{
+    lifecycle: {
+      created:function(){
+        var _this = this;
+        _this.time = new Date().toLocaleTimeString();
+        setInterval(function(){
+          _this.time = new Date().toLocaleTimeString();
+        }, 1000);
+      }
+    }
+  });
+</script>
