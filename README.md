@@ -4,10 +4,10 @@
 
 #Sigil.js
 Sigil.js is a view framework for the modern web. It features the following in one incredibly minimal package:
-* [web components](http://webcomponents.org)
-* virtual dom
-* html templating language
-* functional view component style
+* re-usable html elements using [web components](http://webcomponents.org)
+* virtual dom for super fast re-rendering using [snabbadom](https://github.com/snabbdom/snabbdom)
+* html templating language that allows bindings to attributes & properties
+* pure functional view component style to reduce re-renderings
 * support for flux based stores like [Redux](http://redux.js.org/)
 
 # Installation
