@@ -17,7 +17,7 @@ Simply reference the Web Component polyfill and Sigil from a CDN:
 <script src="https://unpkg.com/sigiljs@latest/dist/sigil.min.js"></script>
 ```
 
-# Hello World Component
+# Hello World
 Web Components allow us to create entirely new HTML components reusable anywhere on the web. Each component lives in its own file. Sigil helps us create these components in easy and performant way. Let's start with something basic.
 
 index.html
