@@ -13,7 +13,7 @@ Sigil.js is a view framework for the modern web. It features the following in on
 # Installation
 Simply reference the Web Component polyfill and Sigil from a CDN:
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.23/webcomponents.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.23/webcomponents-lite.min.js"></script>
 <script src="https://unpkg.com/sigiljs@latest/dist/sigil.min.js"></script>
 ```
 
@@ -22,7 +22,7 @@ Web Components allow us to create entirely new HTML components reusable anywhere
 
 index.html
 ```html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.23/webcomponents.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.23/webcomponents-lite.min.js"></script>
 <link rel="import" href="hello-world.html">
 <hello-world></hello-world>
 ```

@@ -167,7 +167,8 @@ function sigil(){
     props = [];
   }
   var html = "";
-  var currentNode = document._currentScript.parentNode;
+  var currentScript = document._currentScript || document.currentScript;
+  var currentNode = currentScript.parentNode;
   html = currentNode.querySelector("#"+name).innerHTML;
   html = "<div>"+html+"</div>";
 
