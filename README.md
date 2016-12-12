@@ -86,15 +86,18 @@ Elements sometimes need a default value for a prop before they've received any e
 ```
 
 # Methods
-Methods can be easily added to your components by passing in additional options.
+Methods can be easily added to your components by passing in additional options. They are usable both externally and internally.
 
 ```html  
 <template id="hello-world">
-  <div>Hello {{:name}}!</div>
+  <div>Hello {{getPerson()}}!</div>
 </template>
 <script>
   sigil("hello-world",["name"],{
     methods: {
+      getPerson: function(){
+        return this.name;
+      },
       setPerson: function(person) {
         this.name = person.firstName;
       }
