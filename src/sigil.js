@@ -167,13 +167,10 @@ function sigil(){
     props = [];
   }
   var html = "";
-  if(options !== undefined && options.template){
-    html = options.template;
-  }
-  else {
-    var currentNode = document._currentScript.parentNode;
-    html = currentNode.querySelector("#"+name).innerHTML;
-  }
+  var currentNode = document._currentScript.parentNode;
+  html = currentNode.querySelector("#"+name).innerHTML;
+  html = "<div>"+html+"</div>";
+
 
   var methods = {};
   if(options && options.methods){
@@ -197,6 +194,13 @@ function sigil(){
   proto.createdCallback = function(){
     this.$props = {};
     this.$lifecycle = {};
+    this.$originalContent = [];
+
+    while(this.childNodes.length>0){
+      var child = this.childNodes[0];
+      this.$originalContent.push(child);
+      child.remove();
+    }
 
     //accessors
     for(var i in accessors){

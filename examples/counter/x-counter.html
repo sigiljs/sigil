@@ -1,11 +1,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.6.0/redux.min.js"></script>
 <script src="../../dist/sigil.min.js"></script>
 <template id="x-counter">
-  <div>
-    {{:count}}
-    <button @click="$action('increment')">+</button>
-    <button @click="$action('decrement')">-</button>
-  </div>
+  {{:count}}
+  <button @click="$action('increment')">+</button>
+  <button @click="$action('decrement')">-</button>
 </template>
 <script>
   sigil("x-counter",["count"],{
