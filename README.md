@@ -355,6 +355,7 @@ Some times the default sigil component creator is not enough.  You can create yo
 # Performance
 Here are some great links for writing performant web applications with Web Components:
 
+* https://www.youtube.com/watch?v=Yr84DpNaMfk
 * https://aerotwist.com/blog/polymer-for-the-performance-obsessed/
 * https://github.com/Polymer/vulcanize
 * https://www.polymer-project.org/1.0/docs/tools/polymer-cli
