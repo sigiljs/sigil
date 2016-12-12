@@ -17,6 +17,8 @@ Simply reference the Web Component polyfill and Sigil from a CDN:
 <script src="https://unpkg.com/sigiljs@latest/dist/sigil.min.js"></script>
 ```
 
+Get started playing immediately at this [jsfiddle](https://jsfiddle.net/8hoddkb2/1/)
+
 # Hello World
 Web Components allow us to create entirely new HTML components reusable anywhere on the web. Each component lives in its own file. Sigil helps us create these components in an easy and performant way. Let's start with something basic.
 
@@ -353,6 +355,7 @@ Some times the default sigil component creator is not enough.  You can create yo
 # Performance
 Here are some great links for writing performant web applications with Web Components:
 
+* https://www.youtube.com/watch?v=Yr84DpNaMfk
 * https://aerotwist.com/blog/polymer-for-the-performance-obsessed/
 * https://github.com/Polymer/vulcanize
 * https://www.polymer-project.org/1.0/docs/tools/polymer-cli
