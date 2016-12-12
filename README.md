@@ -93,13 +93,13 @@ Methods can be easily added to your components by passing in additional options.
   <div>Hello {{getPerson()}}!</div>
 </template>
 <script>
-  sigil("hello-world",["name"],{
+  sigil("hello-world",["person"],{
     methods: {
-      getName: function(){
-        return this.name;
+      getPerson: function(){
+        return this.person;
       },
-      setName: function(person) {
-        this.name = person.firstName;
+      setPerson: function(person) {
+        this.person = person;
       }
     }
   })
@@ -107,7 +107,7 @@ Methods can be easily added to your components by passing in additional options.
 
 <hello-world></hello-world>
 <script>
-  document.querySelector("hello-world").setName("Richard");
+  document.querySelector("hello-world").setPerson("Richard");
 </script>
 ```
 
