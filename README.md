@@ -30,7 +30,7 @@ hello-world.html
 ```html
 <script src="https://unpkg.com/sigiljs@latest/dist/sigil.min.js"></script>
 <template id="hello-world">
-  <div>Hello World</div>
+  Hello World
 </template>
 <script>
   sigil("hello-world")
@@ -53,7 +53,7 @@ Custom elements are more interesting when bound to data. Sigil.js supports unidi
 
 ```html  
 <template id="hello-world">
-  <div>{{#greeting}} {{:person}}!</div>
+  {{#greeting}} {{:person}}!
 </template>
 <script>
   sigil("hello-world",["person"]);
@@ -73,7 +73,7 @@ Elements sometimes need a default value for a prop before they've received any e
 
 ```html  
 <template id="hello-world">
-  <div>{{#greeting}} {{:person}}!</div>
+  {{#greeting}} {{:person}}!
 </template>
 <script>
   sigil("hello-world",["person"],{
@@ -90,7 +90,7 @@ Methods can be easily added to your components by passing in additional options.
 
 ```html  
 <template id="hello-world">
-  <div>Hello {{getPerson()}}!</div>
+  Hello {{getPerson()}}!
 </template>
 <script>
   sigil("hello-world",["person"],{
@@ -116,7 +116,7 @@ Sigil offers a number of lifecycle hooks:
 
 ```html
 <template id="hello-world">
-  <div>Hello {{:name}}!</div>
+  Hello {{:name}}!
 </template>
 <script>
   sigil("hello-world",["name"],{
@@ -155,11 +155,9 @@ Sigil.js has only three types of html bindings it can perform.
 
 ```html
 <template id="hello-international">
-  <div>
-    <hello-world #greeting="getGreeting('chinese')" :person="#name"></hello-world>
-    <hello-world #greeting="getGreeting('spanish')" :person="#name"></hello-world>
-    <hello-world #greeting="getGreeting('german')" :person="#name"></hello-world>
-  </div>
+  <hello-world #greeting="getGreeting('chinese')" :person="#name"></hello-world>
+  <hello-world #greeting="getGreeting('spanish')" :person="#name"></hello-world>
+  <hello-world #greeting="getGreeting('german')" :person="#name"></hello-world>
 </template>
 <script>
   sigil("hello-international",{
@@ -215,11 +213,9 @@ Elements can be conditionally rendered based off a boolean expression.
 
 ```html
 <template id="hello-world">
-  <div>
-    <div %if="langauge == 'english'">Hello World!</div>
-    <div %if="langauge == 'german'">Hallo Welt</div>
-    <div %if="langauge == 'chinese'">你好，世界</div>
-  </div>
+  <div %if="langauge == 'english'">Hello World!</div>
+  <div %if="langauge == 'german'">Hallo Welt</div>
+  <div %if="langauge == 'chinese'">你好，世界</div>
 </template>
 <script>
   sigil("hello-world",["language"]);
@@ -238,9 +234,7 @@ Lists of elements can be rendered out from arrays.
 
 ```html
 <template id="hello-world">
-  <div>
-    <div %for="person in :people'">Hello {{person}}!</div>
-  </div>
+  <div %for="person in :people'">Hello {{person}}!</div>
 </template>
 <script>
   sigil("hello-world",["people"]);
@@ -349,7 +343,7 @@ Some times the default sigil component creator is not enough.  You can create yo
 </script>
 
 <template id="hello-world">
-  <div>{{$store()}}</div>
+  {{$store()}}
 </template>
 <script>
   connectedComponent("hello-world")
