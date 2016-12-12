@@ -4,65 +4,52 @@
 
 #Sigil.js
 Sigil.js is a view framework for the modern web. It features the following in one incredibly minimal package:
-* [web components](http://webcomponents.org)
-* virtual dom
-* html templating language
-* functional view component style
-* support for flux based stores like [Redux](http://redux.js.org/)
+* re-usable html elements using [web components](http://webcomponents.org)
+* virtual dom for super fast re-rendering using [snabbadom](https://github.com/snabbdom/snabbdom)
+* html templating language that allows bindings to attributes & properties with powerful expressions
+* pure functional view component style to reduce re-renderings
+* support for immutable flux based stores like [Redux](http://redux.js.org/) and [Kamea](https://github.com/sigiljs/kamea)
 
 # Installation
-CDN:
+Simply reference the Web Component polyfill and Sigil from a CDN:
 ```html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.23/webcomponents.min.js"></script>
 <script src="https://unpkg.com/sigiljs@latest/dist/sigil.min.js"></script>
 ```
 
 # Hello World
+Web Components allow us to create entirely new HTML components reusable anywhere on the web. Each component lives in its own file. Sigil helps us create these components in an easy and performant way. Let's start with something basic.
 
+index.html
 ```html
-<script>
-  sigil("hello-world",{
-    template: "<div>Hello World!</div>"
-  })
-</script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.23/webcomponents.min.js"></script>
+<link rel="import" href="hello-world.html">
 <hello-world></hello-world>
 ```
-
-# Syntax Highlighting
-By default sigil will look for a template of the same id as the tag name. Template tags allow you to specify inert html in your web page. It also has the benefit of giving syntax highlighting.
-
+hello-world.html
 ```html
+<script src="https://unpkg.com/sigiljs@latest/dist/sigil.min.js"></script>
 <template id="hello-world">
-    <div>Hello World!</div>
-</template>
-<script>
-  sigil("hello-world")
-</script>
-
-<hello-world></hello-world>
-```
-
-# Web Component
-Sigil.js contains everything you need to use [web components](http://webcomponents.org). This allows us to use HTML imports to put our component in a separate file.
-
-index.html:
-```html
-<link rel="import" href="hello-world.html" >
-<hello-world></hello-world>
-```
-
-hello-world.html:
-```html  
-<template id="hello-world">
-    <div>Hello World!</div>
+  <div>Hello World</div>
 </template>
 <script>
   sigil("hello-world")
 </script>
 ```
+Notice the dependencies exist within the web component file itself, allowing your index.html to be nice and clean, and letting your web component express what it needs. Sigil will search for a template element with the same id as it's element name that will be used as the contents of the component.
 
+Just like it takes time for a document to load, it takes a small amount of time for Web Components dependencies to be acquired and our custom elements fully created. We can know when the work is complete with the `WebComponentsReady` event:
+
+index.html
+```html
+<script>
+  window.addEventListener('WebComponentsReady', function(e) {
+    // imports are loaded and elements have been registered
+  });
+</script>
+```
 # Attributes & Props
-Sigil.js makes development of functional web components easy. It only supports unidirectional binding of its defined properties and attributes. Both attributes and your defined props are reactive, meaning if you change them it will trigger a re-render of the component. Components by default are [pure](https://en.wikipedia.org/wiki/Pure_function), meaning if you give them the exact same attributes or props no re-render will occur.
+Custom elements are more interesting when bound to data. Sigil.js supports unidirectional binding of its defined properties and attributes. Both attributes and your defined props are reactive, meaning if you change them it will trigger a re-render of the component. Components by default are [pure](https://en.wikipedia.org/wiki/Pure_function), meaning if you give them the exact same attributes or props no re-render will occur.
 
 ```html  
 <template id="hello-world">
@@ -73,8 +60,11 @@ Sigil.js makes development of functional web components easy. It only supports u
 </script>
 
 <hello-world greeting="Hola"></hello-world>
+
 <script>
-  document.querySelector("hello-world").person = "Richard";
+  window.addEventListener('WebComponentsReady', function(e) {
+    document.querySelector("hello-world").person = "Richard";
+  });
 </script>
 ```
 
@@ -96,17 +86,20 @@ Elements sometimes need a default value for a prop before they've received any e
 ```
 
 # Methods
-Methods can be easily added to your components by passing in additional options.
+Methods can be easily added to your components by passing in additional options. They are usable both externally and internally.
 
 ```html  
 <template id="hello-world">
-  <div>Hello {{:name}}!</div>
+  <div>Hello {{getPerson()}}!</div>
 </template>
 <script>
-  sigil("hello-world",["name"],{
+  sigil("hello-world",["person"],{
     methods: {
+      getPerson: function(){
+        return this.person;
+      },
       setPerson: function(person) {
-        this.name = person.firstName;
+        this.person = person;
       }
     }
   })
@@ -114,10 +107,7 @@ Methods can be easily added to your components by passing in additional options.
 
 <hello-world></hello-world>
 <script>
-  document.querySelector("hello-world").setPerson({
-    firstName: "Richard",
-    lastName: "Anaya"
-  });
+  document.querySelector("hello-world").setPerson("Richard");
 </script>
 ```
 
@@ -237,7 +227,9 @@ Elements can be conditionally rendered based off a boolean expression.
 
 <hello-world></hello-world>
 <script>
-  document.querySelector("hello-world").language = "chinese";
+  window.addEventListener('WebComponentsReady', function(e) {
+    document.querySelector("hello-world").language = "chinese";
+  });
 </script>
 ```
 
@@ -255,7 +247,9 @@ Lists of elements can be rendered out from arrays.
 </script>
 <hello-people></hello-people>
 <script>
-  document.querySelector("hello-people").people = ["Richard","Howard","Justin"];
+  window.addEventListener('WebComponentsReady', function(e) {
+    document.querySelector("hello-people").people = ["Richard","Howard","Justin"];
+  });
 </script>
 ```
 
@@ -293,8 +287,10 @@ Parameters
 
 <hello-button></hello-button>
 <script>
-  document.querySelector("hello-button").addEventHandler("click",function(e){
-    console.log(e.details);
+  window.addEventListener('WebComponentsReady', function(e) {
+    document.querySelector("hello-button").addEventHandler("click",function(e){
+      console.log(e.details);
+    });
   });
 </script>
 ```
@@ -322,14 +318,16 @@ Parameters
 
 <hello-button></hello-button>
 <script>
-  document.querySelector("hello-button").addEventHandler("action",function(e){
-    var action = e.details;
-    var type = action.type;
-    var data = action.data;
+  window.addEventListener('WebComponentsReady', function(e) {
+    document.querySelector("hello-button").addEventHandler("action",function(e){
+      var action = e.details;
+      var type = action.type;
+      var data = action.data;
 
-    if( type === 'say-hello' ){
-      console.log(data);
-    }    
+      if( type === 'say-hello' ){
+        console.log(data);
+      }    
+    });
   });
 </script>
 ```
@@ -358,9 +356,9 @@ Some times the default sigil component creator is not enough.  You can create yo
 </script>
 ```
 
-# Browser Support
-* Edge (all versions and devices), Internet Explorer 9+
-* Firefox (all versions, devices, and platforms)
-* Chrome (all versions, devices, and platforms), Android 4+ stock browser
-* Safari Mac, Safari iOS 5+
-* Opera 11+ (all devices and platforms)
+# Performance
+Here are some great links for writing performant web applications with Web Components:
+
+* https://aerotwist.com/blog/polymer-for-the-performance-obsessed/
+* https://github.com/Polymer/vulcanize
+* https://www.polymer-project.org/1.0/docs/tools/polymer-cli
