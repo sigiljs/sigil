@@ -95,10 +95,10 @@ Methods can be easily added to your components by passing in additional options.
 <script>
   sigil("hello-world",["name"],{
     methods: {
-      getPerson: function(){
+      getName: function(){
         return this.name;
       },
-      setPerson: function(person) {
+      setName: function(person) {
         this.name = person.firstName;
       }
     }
@@ -107,10 +107,7 @@ Methods can be easily added to your components by passing in additional options.
 
 <hello-world></hello-world>
 <script>
-  document.querySelector("hello-world").setPerson({
-    firstName: "Richard",
-    lastName: "Anaya"
-  });
+  document.querySelector("hello-world").setName("Richard");
 </script>
 ```
 
