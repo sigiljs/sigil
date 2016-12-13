@@ -142,7 +142,7 @@ Sigil offers a number of lifecycle hooks:
         //called right before virtual dom update of html
       },
       updated: function() {
-        //called right before virtual dom update of html
+        //called right after virtual dom update of html
       },
     }
   })
