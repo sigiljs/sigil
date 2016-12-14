@@ -152,7 +152,7 @@ Sigil offers a number of lifecycle hooks:
 # HTML Bindings
 Sigil.js has only three types of html bindings it can perform.
 * Bindings prefixed with `#` will bind an expression to an html element's attribute
-* Bindings prefixed with `:` will bind an expression to an html element's property
+* Bindings prefixed with `:` will bind an expression to an html element's defined property
 * Bindings prefixed with `@` will bind an expression to an html element's event. This is discussed below.
 
 ```html
