@@ -130,7 +130,7 @@ Sigil offers a number of lifecycle hooks:
         //called when element is added to DOM
       },
       removed: function() {
-        //called when element is added to DOM
+        //called when element is removed from the DOM
       },
       attributeChanged: function(attrName, oldValue, newValue) {
         //called when attribute is changed
