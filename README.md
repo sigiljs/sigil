@@ -22,7 +22,7 @@ Get started playing immediately at this [jsfiddle](https://jsfiddle.net/8hoddkb2
 Or if referencing from a web component:
 
 ```html
-<script src="https://unpkg.com/sigiljs@latest/sigil.html"></script>
+<link rel="import" href="https://unpkg.com/sigiljs@latest/sigil.html">
 ```
 
 # Hello World
@@ -36,7 +36,7 @@ index.html
 ```
 hello-world.html
 ```html
-<script src="https://unpkg.com/sigiljs@latest/sigil.html"></script>
+<link rel="import" href="https://unpkg.com/sigiljs@latest/sigil.html">
 <template id="hello-world">
   Hello World
 </template>
