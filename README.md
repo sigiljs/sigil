@@ -14,7 +14,7 @@ Sigil.js is a view framework for the modern web. It features the following in on
 Simply reference the Web Component polyfill and Sigil from a CDN:
 ```html
 <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/0.7.23/webcomponents-lite.min.js"></script>
-<script src="https://unpkg.com/sigiljs@latest/dist/sigil.min.js"></script>
+<script src="https://unpkg.com/sigiljs@latest/sigil.min.js"></script>
 ```
 
 Get started playing immediately at this [jsfiddle](https://jsfiddle.net/8hoddkb2/1/)
@@ -30,7 +30,7 @@ index.html
 ```
 hello-world.html
 ```html
-<script src="https://unpkg.com/sigiljs@latest/dist/sigil.min.js"></script>
+<script src="https://unpkg.com/sigiljs@latest/sigil.min.js"></script>
 <template id="hello-world">
   Hello World
 </template>

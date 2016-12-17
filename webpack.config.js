@@ -5,7 +5,6 @@ module.exports = {
   devtool: '',
   entry: path.resolve('src', 'sigil.js'),
   output: {
-    path: path.resolve('dist'),
     filename: 'sigil.min.js',
     publicPath: '/',
     library: "sigil",
