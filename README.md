@@ -36,7 +36,7 @@ index.html
 ```
 hello-world.html
 ```html
-<script src="https://unpkg.com/sigiljs@latest/sigil.min.js"></script>
+<script src="https://unpkg.com/sigiljs@latest/sigil.html"></script>
 <template id="hello-world">
   Hello World
 </template>
