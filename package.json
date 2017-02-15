@@ -1,6 +1,6 @@
 {
   "name": "sigiljs",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "",
   "main": "src/sigil.js",
   "directories": {
@@ -25,7 +25,9 @@
     "babel-preset-es2015": "latest",
     "babel-preset-react": "latest",
     "babel-preset-stage-0": "latest",
-    "classnames": "^2.2.5",
     "webpack": "latest"
+  },
+  "dependencies": {
+    "classnames": "^2.2.5"
   }
 }
