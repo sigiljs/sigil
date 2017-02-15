@@ -167,9 +167,14 @@ function sigil(){
     props = [];
   }
   var html = "";
-  var currentScript = document._currentScript || document.currentScript;
-  var currentNode = currentScript.parentNode;
-  html = currentNode.querySelector("#"+name).innerHTML;
+  if(options.template){
+    html = options.template;
+  }
+  else {
+    var currentScript = document._currentScript || document.currentScript;
+    var currentNode = currentScript.parentNode;
+    html = currentNode.querySelector("#"+name).innerHTML;
+  }
   html = "<div>"+html+"</div>";
 
 
